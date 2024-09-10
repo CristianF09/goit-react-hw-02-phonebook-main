@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from './ContactListItem.module.css';
 
 const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
-    <li className={styles.item}>
+    <li>
       {name}: {number}
-      <button className={styles.button} onClick={() => onDelete(id)}>Delete</button>
+      <button onClick={() => onDelete(id)}>Delete</button> {/* Buton pentru ștergere */}
     </li>
   );
 };

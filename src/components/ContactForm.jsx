@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './ContactForm.module.css';
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = ({ addContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -11,7 +11,12 @@ const ContactForm = ({ onAddContact }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name && number) {
-      onAddContact(name, number);
+      const newContact = {
+        name,
+        number,
+        id: window.nanoid() // Use the globally exposed nanoid function
+      };
+      addContact(newContact);
       setName('');
       setNumber('');
     }
@@ -43,7 +48,7 @@ const ContactForm = ({ onAddContact }) => {
           required
         />
       </label>
-      <button type="submit">Add Contact</button>
+      <button type="submit" className={styles.button}>Add Contact</button>
     </form>
   );
 };

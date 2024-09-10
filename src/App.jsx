@@ -26,6 +26,7 @@ const App = () => {
     setContacts(prevContacts => [...prevContacts, newContact]);
   };
 
+  // Funcția pentru ștergerea contactelor
   const deleteContact = (contactId) => {
     setContacts(prevContacts =>
       prevContacts.filter(contact => contact.id !== contactId)
@@ -47,16 +48,12 @@ const App = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.section}>
-        <h1>Phonebook</h1>
-        <ContactForm addContact={addContact} />
-      </div>
+      <h1>Phonebook</h1>
+      <ContactForm addContact={addContact} />
 
-      <div className={styles.section}>
-        <h2>Contacts</h2>
-        <Filter value={filter} onChange={handleFilterChange} />
-        <ContactList contacts={filteredContacts} onDelete={deleteContact} />
-      </div>
+      <h2>Contacts</h2>
+      <Filter value={filter} onChange={handleFilterChange} />
+      <ContactList contacts={filteredContacts} onDelete={deleteContact} /> {/* Transmitem funcția de ștergere */}
     </div>
   );
 };
