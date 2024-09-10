@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
-import ContactListItem from './components/ContactListItem'; // Correct import
-import Filter from './components/Filter'; 
-import Section from './components/Section'; // Correct import for Section
+import Filter from './components/Filter';
 import styles from './App.module.css';
 
 const App = () => {
@@ -49,12 +47,16 @@ const App = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Phonebook</h1>
-      <ContactForm addContact={addContact} />
+      <div className={styles.section}>
+        <h1>Phonebook</h1>
+        <ContactForm addContact={addContact} />
+      </div>
 
-      <h2>Contacts</h2>
-      <Filter value={filter} onChange={handleFilterChange} />
-      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
+      <div className={styles.section}>
+        <h2>Contacts</h2>
+        <Filter value={filter} onChange={handleFilterChange} />
+        <ContactList contacts={filteredContacts} onDelete={deleteContact} />
+      </div>
     </div>
   );
 };

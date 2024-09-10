@@ -1,8 +1,14 @@
-import React from 'react';
-import styles from './Section.module.css';
+import Section from './components/Section';
 
-const Section = ({ children }) => {
-  return <section className={styles.section}>{children}</section>;
-};
+return (
+  <div className={styles.container}>
+    <Section title="Phonebook">
+      <ContactForm addContact={addContact} />
+    </Section>
 
-export default Section;
+    <Section title="Contacts">
+      <Filter value={filter} onChange={handleFilterChange} />
+      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
+    </Section>
+  </div>
+);
