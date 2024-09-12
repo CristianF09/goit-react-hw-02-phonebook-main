@@ -1,15 +1,14 @@
 import React from 'react';
-import ContactListItem from './ContactListItem';
+import ContactListItem from './ContactListItem'; // Adjust path as needed
+import styles from './ContactList.module.css'; // Adjust path as needed
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
-    <ul>
-      {contacts.map(({ id, name, number }) => (
+    <ul className={styles.contactList}>
+      {contacts.map(contact => (
         <ContactListItem
-          key={id}
-          id={id}
-          name={name}
-          number={number}
+          key={contact.id}
+          contact={contact}
           onDelete={onDelete}
         />
       ))}
