@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';  // Use this import for nanoid
 import styles from './ContactForm.module.css';
 
 const ContactForm = ({ addContact }) => {
@@ -12,12 +13,12 @@ const ContactForm = ({ addContact }) => {
     e.preventDefault();
     if (name && number) {
       const newContact = {
+        id: nanoid(), // Correct way to generate an ID
         name,
         number,
-        id: window.nanoid() // Use the globally exposed nanoid function
       };
-      addContact(newContact);
-      setName('');
+      addContact(newContact); // Call this only after the form is submitted
+      setName('');  // Clear inputs after submitting
       setNumber('');
     }
   };

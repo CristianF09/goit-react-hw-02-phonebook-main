@@ -14,8 +14,7 @@ const App = () => {
   ]);
   const [filter, setFilter] = useState('');
 
-  const addContact = (name, number) => {
-    const newContact = { id: nanoid(), name, number };
+  const addContact = (newContact) => {
     const isDuplicate = contacts.some(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
@@ -50,7 +49,7 @@ const App = () => {
   return (
     <div className={styles.container}>
       <h1>Phonebook</h1>
-      <ContactForm onAddContact={addContact} />
+      <ContactForm addContact={addContact} />
 
       <h2>Contacts</h2>
       <Filter value={filter} onChange={handleFilterChange} />

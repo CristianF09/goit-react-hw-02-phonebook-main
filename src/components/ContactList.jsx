@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactListItem from './ContactListItem'; // Adjust path as needed
-import styles from './ContactList.module.css'; // Adjust path as needed
+import ContactListItem from './ContactListItem'; 
+import styles from './ContactList.module.css'; 
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
