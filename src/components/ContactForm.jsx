@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { nanoid } from 'nanoid';  // Use this import for nanoid
 import styles from './ContactForm.module.css';
 
 const ContactForm = ({ addContact }) => {
@@ -13,12 +12,12 @@ const ContactForm = ({ addContact }) => {
     e.preventDefault();
     if (name && number) {
       const newContact = {
-        id: nanoid(), // Correct way to generate an ID
         name,
         number,
+        id: window.nanoid() 
       };
-      addContact(newContact); // Call this only after the form is submitted
-      setName('');  // Clear inputs after submitting
+      addContact(newContact);
+      setName('');
       setNumber('');
     }
   };
@@ -32,7 +31,7 @@ const ContactForm = ({ addContact }) => {
           name="name"
           value={name}
           onChange={handleNameChange}
-          pattern="^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$"
+          pattern="^[a-zA-Z]+(([\'\-\s][a-zA-Z])?[a-zA-Z]*)*$"
           title="Name may contain only letters, apostrophe, dash, and spaces."
           required
         />
@@ -44,7 +43,7 @@ const ContactForm = ({ addContact }) => {
           name="number"
           value={number}
           onChange={handleNumberChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          pattern="^\+?\d{1,4}?[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$"
           title="Phone number must be digits and can contain spaces, dashes, parentheses, and can start with +"
           required
         />
